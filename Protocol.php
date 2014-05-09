@@ -246,7 +246,7 @@ abstract class Protocol implements \ArrayAccess, \IteratorAggregate {
      */
     protected function _resolve ( $path, &$accumulator, $id = null ) {
 
-        if(substr($path, 0, 6) == 'hoa://')
+        if('hoa://' === substr($path, 0, 6))
             $path = substr($path, 6);
 
         if(empty($path))
@@ -760,7 +760,7 @@ class Wrapper {
     }
 
     /**
-     * Read from stream. 
+     * Read from stream.
      * This method is called in response to fread() and fgets().
      *
      * @access  public

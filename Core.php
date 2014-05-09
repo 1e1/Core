@@ -317,14 +317,12 @@ class Core implements Parameter\Parameterizable {
             return;
         }
 
-        if('hoa://' === substr($path, 0, 6))
-            $path = substr($path, 6);
-
-        $path   = trim($path, '/');
-        $parts  = explode('/', $path);
         $handle = $root;
 
-        foreach($parts as $part)
+        if('hoa' !== ($part=strtok($path, '://')) && $part)
+            $handle = $handle[$part];
+
+        while ($part = strtok($path, '/'))
             $handle = $handle[$part];
 
         $handle->setReach($reach);
